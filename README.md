@@ -53,6 +53,12 @@ Development servers:
 uvicorn src.asgi:app --reload --host 0.0.0.0 --port 8000 --log-level debug --reload
 ```
 
+Add user with balance 100.00 to the database:
+```bash
+```bash
+make create-user
+```
+
 ## Linting and Formatting
 
 Linting completed with flake8

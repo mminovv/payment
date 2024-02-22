@@ -5,13 +5,16 @@ from src.api.exceptions.handler import (
     auth_error_handler,
     logic_error_handler,
     not_found_error_handler,
-    token_expired_or_not_valid,
+    token_expired_or_not_valid, system_error_handler,
 )
-from src.services.exceptions import (
-    AccessDeniedError,
-    AuthenticationError,
+from src.services.auth.exceptions import (
     TokenExpiredOrNotValid,
+    AuthenticationError,
+    AccessDeniedError,
+)
+from src.services.users.exceptions import (
     UserNotFoundError,
+    UserAlreadyExistsOrNoSuchRoleSystemError,
 )
 
 
@@ -30,4 +33,7 @@ def register_exceptions(app: FastAPI) -> None:
     )
     app.exception_handlers.setdefault(
         ValueError, logic_error_handler,
+    )
+    app.exception_handlers.setdefault(
+        UserAlreadyExistsOrNoSuchRoleSystemError, system_error_handler,
     )

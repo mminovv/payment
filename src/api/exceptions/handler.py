@@ -2,7 +2,7 @@ from starlette import status
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from src.services.exceptions import (
+from src.services.auth.exceptions import (
     AccessDeniedError,
     AuthenticationError,
     TokenExpiredOrNotValid,
@@ -37,3 +37,7 @@ def logic_error_handler(request: Request, exc: Exception):
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST, content=dict(detail=exc.message)  # noqa
     )
+
+
+def system_error_handler(exc: Exception):
+    return print(exc.message)

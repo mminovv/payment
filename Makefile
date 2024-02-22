@@ -16,3 +16,6 @@ exec: ## exec to app container
 
 lint: ## lint the code with black
 	black exclude=venv,env,docs,migrations . --check
+
+create-user: ## create user
+	docker exec -it app python src/core/cli insert-user
