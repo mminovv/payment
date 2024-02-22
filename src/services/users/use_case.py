@@ -6,7 +6,6 @@ from src.infra.db import (
 )
 from src.interfaces.repositories.db.users import IUsersRepository
 from src.services.common import CommonUseCase
-from src.services.users.exceptions import UserAlreadyExistsOrNoSuchRoleSystemError
 
 
 class UserCreateUseCase(CommonUseCase):
