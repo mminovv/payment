@@ -1,3 +1,6 @@
+ARG PYTHON_VERSION
+
+FROM python:$PYTHON_VERSION as base
 
 ENV ROOT /app
 ENV PYTHONPATH "${PYTHONPATH}:/app/src/"
