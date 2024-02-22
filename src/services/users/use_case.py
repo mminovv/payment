@@ -38,5 +38,5 @@ class UserCreateUseCase(CommonUseCase):
                 self.repo.insert_user(instance=instance)
                 self.session.commit()
             except sqlalchemy.exc.IntegrityError:
-                raise UserAlreadyExistsOrNoSuchRoleSystemError
+                print(f'User already exists with username: {repr(username)}')
             return instance
