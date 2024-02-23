@@ -60,7 +60,7 @@ Add user with balance 100.00 to the database:
 make create-user
 ```
 
-Check documentation in [swagger](127.0.0.1:8000/docs):
+Check documentation in [swagger](127.0.0.1:8000/docs)
 
 
 ## Linting and Formatting
