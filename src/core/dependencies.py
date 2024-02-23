@@ -6,12 +6,14 @@ from fastapi import (
 )
 
 from src.core.database import (
-    async_session_impl, sync_session_impl,
+    sync_session_impl,
 )
+from src.infra.db.repositories.balance import BalanceRepository
 from src.infra.db.repositories.users import UserRepository
 from src.interfaces.db import (
     get_session,
 )
+from src.interfaces.repositories.db.balance import IBalanceRepository
 from src.interfaces.repositories.db.users import IUsersRepository
 
 T = TypeVar('T')
@@ -29,4 +31,7 @@ def register_dependencies(app: FastAPI):
     )
     app.dependency_overrides.setdefault(
         *(IUsersRepository, override_repo(UserRepository))
+    )
+    app.dependency_overrides.setdefault(
+        *(IBalanceRepository, override_repo(BalanceRepository))
     )

@@ -2,6 +2,7 @@ import click
 from faker import Faker
 
 from src.core.database import async_session_impl
+from src.infra.db.repositories.balance import BalanceRepository
 from src.infra.db.repositories.users import UserRepository
 from src.services.users.use_case import UserCreateUseCase
 
@@ -21,7 +22,12 @@ def insert_user(
 ) -> None:
     session = async_session_impl()
     repo = UserRepository(session=session)
-    service = UserCreateUseCase(repo=repo, session=session)
+    balance_repo = BalanceRepository(session=session)
+    service = UserCreateUseCase(
+        repo=repo,
+        session=session,
+        balance_repo=balance_repo,
+    )
     service(
         username=username,
         password=password,

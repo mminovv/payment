@@ -1,20 +1,21 @@
 from fastapi import FastAPI
+from slowapi import _rate_limit_exceeded_handler # noqa
 
 from src.api.exceptions.handler import (
     access_denied_error_handler,
     auth_error_handler,
     logic_error_handler,
     not_found_error_handler,
-    token_expired_or_not_valid, system_error_handler,
+    token_expired_or_not_valid,
 )
 from src.services.auth.exceptions import (
     TokenExpiredOrNotValid,
     AuthenticationError,
     AccessDeniedError,
 )
+from src.services.exceptions import RateLimitException
 from src.services.users.exceptions import (
     UserNotFoundError,
-    UserAlreadyExistsOrNoSuchRoleSystemError,
 )
 
 
@@ -35,5 +36,5 @@ def register_exceptions(app: FastAPI) -> None:
         ValueError, logic_error_handler,
     )
     app.exception_handlers.setdefault(
-        UserAlreadyExistsOrNoSuchRoleSystemError, system_error_handler,
+        RateLimitException, _rate_limit_exceeded_handler,
     )
