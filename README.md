@@ -1,4 +1,5 @@
 # Bakai Payment Gateway
+Used clean architecture.
 ## Table of Contents
 
 * [Setup](#setup)
