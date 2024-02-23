@@ -4,6 +4,7 @@
 * [Setup](#setup)
 * [Setup on a local machine with Docker and Docker Compose](#setup-on-a-local-machine-with-docker-and-docker-compose)
 * [Installing on a local machine with venv](#installing-on-a-local-machine-with-venv)
+* [App testing](#app-testing)
 * [Linting & Formatting](#linting-and-formatting)
 
 ## Setup
@@ -52,12 +53,15 @@ Development servers:
 # run dev server
 uvicorn src.asgi:app --reload --host 0.0.0.0 --port 8000 --log-level debug --reload
 ```
+### App testing
 
 Add user with balance 100.00 to the database:
 ```bash
-```bash
 make create-user
 ```
+
+Check documentation in [swagger](127.0.0.1:8000/docs):
+
 
 ## Linting and Formatting
 
