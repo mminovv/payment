@@ -46,5 +46,5 @@ def sync_session(url: str) -> orm.scoped_session:
     return orm.scoped_session(factory)
 
 
-async_session_impl = sync_session(settings.POSTGRES_URI.replace('+asyncpg', ''))
-sync_session_impl = get_session, async_session(settings.POSTGRES_URI)
+sync_session_impl = sync_session(settings.POSTGRES_URI.replace('+asyncpg', ''))
+async_session_impl = get_session, async_session(settings.POSTGRES_URI)

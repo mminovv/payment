@@ -8,11 +8,11 @@ from slowapi.util import get_remote_address
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.core import security
+from src.core.settings import settings
 from src.infra.db import User
 from src.interfaces.repositories.db.users import IUsersRepository
 from src.services.auth.exceptions import TokenExpiredOrNotValid
 from src.services.users.exceptions import UserNotFoundError
-from src.core.settings import settings
 
 # Rate limiter for requests to the API endpoints (5 requests per 3 minutes)
 # SlowAPI is used to limit the number of requests to the API endpoints
@@ -25,7 +25,6 @@ limiter = Limiter(
 
 # OAuth2 scheme for the API endpoints
 oauth2_scheme = APIKeyCookie(name='access_token')
-
 
 
 async def get_current_user(

@@ -22,13 +22,13 @@ async def login(
     dto: UserLoginRequest,
     repo: IUsersRepository = Depends(),
 ):
-    service = AuthorizationUseCase(repo=repo)
-    return await service.authenticate(dto=dto, response=Response())
+    use_case = AuthorizationUseCase(repo=repo)
+    return await use_case.authenticate(dto=dto, response=Response())
 
 
 @auth.post('/logout')
 async def logout(
     _: get_current_user = Depends()
 ):
-    service = AuthLogoutUseCase()
-    return await service.logout()
+    use_case = AuthLogoutUseCase()
+    return await use_case.logout()

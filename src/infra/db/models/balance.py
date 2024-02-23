@@ -24,5 +24,6 @@ class Balance(Base):
     user = sa.orm.relationship(
         'User',
         uselist=False,
+        lazy='joined',
         back_populates='balance',
     )

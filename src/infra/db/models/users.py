@@ -25,5 +25,6 @@ class User(Base, SoftDeleteMixin):
     balance = sa.orm.relationship(
         "Balance",
         uselist=False,
+        lazy="joined",
         back_populates="user"
     )

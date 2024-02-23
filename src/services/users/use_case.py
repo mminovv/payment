@@ -1,4 +1,5 @@
 import sqlalchemy
+from loguru import logger
 
 from src.core.security import hashing_secret
 from src.infra.db import (
@@ -44,5 +45,5 @@ class UserCreateUseCase(CommonUseCase):
                 self.session.commit()
 
             except sqlalchemy.exc.IntegrityError:
-                print(f'User already exists with username: {repr(username)}')
+                logger.info(f'User already exists with username: {repr(username)}')
             return instance

@@ -17,7 +17,7 @@ class BalanceRepository(CommonRepository, IBalanceRepository):
             update(Balance)
             .where(Balance.user_id == user_id)
             .values(balance=amount)
-            .returning(func.cast(Balance.balance, Numeric(scale=2)))
+            .returning(Balance.balance)
         )
         result = await self.session.execute(query)
         return result.scalar()
