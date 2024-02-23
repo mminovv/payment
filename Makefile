@@ -19,3 +19,6 @@ lint: ## lint the code with black
 
 create-user: ## create user
 	docker exec -it app python src/core/cli insert-user
+
+update-requirements: ## update requirements.txt
+	poetry export -f requirements.txt --output requirements.txt --without-hashes
